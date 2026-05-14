@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SAAD ABBASI – Premium Digital Agency specializing in Web Development, Graphic Design, Digital Marketing, E-Commerce, Branding & Social Media Management.">
+<meta name="keywords" content="SAAD ABBASI, web development, digital marketing, graphic design, branding, e-commerce, social media">
+<meta property="og:title" content="SAAD ABBASI – Digital Excellence">
+<meta property="og:description" content="Premium digital agency delivering innovation, creativity, and growth.">
+<title>SAAD ABBASI – Digital Excellence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ===================== CSS VARIABLES ===================== */
+:root {
+  --royal-blue: #1a3fdb;
+  --blue-light: #3d5eff;
+  --blue-glow: #4f72ff;
+  --neon: #00e5ff;
+  --neon-green: #39ff14;
+  --neon-purple: #bf5fff;
+  --white: #ffffff;
+  --off-white: #f0f4ff;
+  --text-muted: #8899bb;
+  --glass: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.12);
+  --glass-hover: rgba(255,255,255,0.10);
+  --shadow-blue: 0 8px 40px rgba(26,63,219,0.35);
+  --shadow-neon: 0 0 30px rgba(0,229,255,0.25);
+  --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  --radius: 20px;
+  --radius-sm: 12px;
+
+  /* Dark theme defaults */
+  --bg: #060a18;
+  --bg2: #0c1228;
+  --bg3: #111830;
+  --surface: #0f1a35;
+  --text: #e8efff;
+  --text-sub: #a0b0d0;
+  --card-bg: rgba(15,26,53,0.85);
+  --nav-bg: rgba(6,10,24,0.85);
+  --input-bg: rgba(15,26,53,0.7);
+  --footer-bg: #04070f;
+}
+
+[data-theme="light"] {
+  --bg: #f0f4ff;
+  --bg2: #e4eaff;
+  --bg3: #dce4ff;
+  --surface: #ffffff;
+  --text: #0a1030;
+  --text-sub: #3a4a70;
+  --card-bg: rgba(255,255,255,0.85);
+  --nav-bg: rgba(240,244,255,0.85);
+  --glass: rgba(26,63,219,0.06);
+  --glass-border: rgba(26,63,219,0.15);
+  --glass-hover: rgba(26,63,219,0.10);
+  --input-bg: rgba(255,255,255,0.8);
+  --footer-bg: #0c1228;
+  --text-muted: #5566aa;
+}
+
+/* ===================== RESET & BASE ===================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  cursor: none;
+  overflow-x: hidden;
+  transition: background 0.5s, color 0.5s;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+button { border: none; cursor: none; font-family: inherit; }
+input, textarea { font-family: inherit; }
+section { position: relative; overflow: hidden; }
+
+/* ===================== SCROLLBAR ===================== */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--royal-blue); border-radius: 99px; }
+
+/* ===================== SCROLL PROGRESS ===================== */
+#scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(90deg, var(--royal-blue), var(--neon));
+  z-index: 9999; transition: width 0.1s linear;
+  box-shadow: 0 0 10px var(--neon);
+}
+
+/* ===================== CUSTOM CURSOR ===================== */
+#cursor {
+  position: fixed; width: 12px; height: 12px;
+  background: var(--neon); border-radius: 50%;
+  pointer-events: none; z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+  box-shadow: 0 0 15px var(--neon);
+  mix-blend-mode: screen;
+}
+#cursor-ring {
+  position: fixed; width: 38px; height: 38px;
+  border: 1.5px solid rgba(0,229,255,0.5); border-radius: 50%;
+  pointer-events: none; z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease-out, width 0.3s, height 0.3s, border-color 0.3s;
+}
+body:hover #cursor { opacity: 1; }
+.cursor-expand #cursor { width: 20px; height: 20px; background: var(--blue-glow); }
+.cursor-expand #cursor-ring { width: 55px; height: 55px; border-color: var(--blue-glow); }
+
+/* ===================== LOADING SCREEN ===================== */
+#loader {
+  position: fixed; inset: 0; z-index: 99997;
+  background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+#loader.hidden { opacity: 0; visibility: hidden; }
+.loader-logo {
+  font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--royal-blue), var(--neon));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  letter-spacing: 3px; margin-bottom: 2rem;
+}
+.loader-bar-wrap {
+  width: 220px; height: 3px; background: var(--glass);
+  border-radius: 99px; overflow: hidden;
+}
+.loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--royal-blue), var(--neon));
+  border-radius: 99px; animation: loadBar 1.8s ease forwards;
+  box-shadow: 0 0 12px var(--neon);
+}
+@keyframes loadBar { from { width: 0; } to { width: 100%; } }
+.loader-dots { display: flex; gap: 8px; margin-top: 1.5rem; }
+.loader-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--royal-blue);
+  animation: dotPulse 1.2s ease infinite;
+}
+.loader-dot:nth-child(2) { animation-delay: 0.2s; background: var(--blue-glow); }
+.loader-dot:nth-child(3) { animation-delay: 0.4s; background: var(--neon); }
+@keyframes dotPulse { 0%,100%{transform:scale(1);opacity:0.5} 50%{transform:scale(1.6);opacity:1} }
+
+/* ===================== NAVBAR ===================== */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 0 5%;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: var(--transition);
+  height: 70px; display: flex; align-items: center;
+}
+#navbar.scrolled {
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+.nav-inner {
+  max-width: 1300px; width: 100%; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.4rem;
+  background: linear-gradient(135deg, var(--royal-blue), var(--neon));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+.nav-logo span { color: var(--neon); -webkit-text-fill-color: var(--neon); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+  font-size: 0.88rem; font-weight: 500; color: var(--text-sub);
+  transition: var(--transition); position: relative; letter-spacing: 0.5px;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 2px; background: linear-gradient(90deg, var(--royal-blue), var(--neon));
+  transition: width 0.3s ease; border-radius: 99px;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+.nav-actions { display: flex; gap: 1rem; align-items: center; }
+.btn-theme {
+  width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  color: var(--text); font-size: 1rem; transition: var(--transition);
+}
+.btn-theme:hover { background: var(--glass-hover); color: var(--neon); }
+.btn-nav {
+  padding: 9px 22px; border-radius: 99px; font-size: 0.85rem; font-weight: 600;
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow));
+  color: #fff; letter-spacing: 0.5px; transition: var(--transition);
+  box-shadow: 0 4px 20px rgba(26,63,219,0.4);
+}
+.btn-nav:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(26,63,219,0.55); }
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: none;
+  background: none; padding: 4px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--text); border-radius: 99px; transition: var(--transition);
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* Mobile Menu */
+#mobile-menu {
+  position: fixed; top: 70px; left: 0; right: 0;
+  background: var(--nav-bg); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 1.5rem 5%; display: none; flex-direction: column; gap: 1rem;
+  z-index: 999;
+}
+#mobile-menu.open { display: flex; }
+#mobile-menu a { font-size: 1rem; color: var(--text-sub); padding: 0.5rem 0; }
+
+/* ===================== BUTTONS ===================== */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 34px; border-radius: 99px; font-size: 0.95rem; font-weight: 600;
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow));
+  color: #fff; transition: var(--transition);
+  box-shadow: 0 6px 30px rgba(26,63,219,0.45);
+  letter-spacing: 0.5px;
+}
+.btn-primary:hover {
+  transform: translateY(-3px); box-shadow: 0 12px 40px rgba(26,63,219,0.6);
+  background: linear-gradient(135deg, var(--blue-glow), var(--neon));
+}
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 34px; border-radius: 99px; font-size: 0.95rem; font-weight: 600;
+  background: transparent; color: var(--text);
+  border: 1.5px solid var(--glass-border); transition: var(--transition);
+  letter-spacing: 0.5px; backdrop-filter: blur(10px);
+}
+.btn-outline:hover {
+  background: var(--glass); border-color: var(--neon); color: var(--neon);
+  transform: translateY(-3px); box-shadow: var(--shadow-neon);
+}
+
+/* ===================== SECTION COMMONS ===================== */
+.section-wrap { max-width: 1300px; margin: 0 auto; padding: 0 5%; }
+.section-label {
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--neon); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px;
+}
+.section-label::before {
+  content: ''; width: 30px; height: 2px;
+  background: linear-gradient(90deg, var(--royal-blue), var(--neon));
+  border-radius: 99px; display: inline-block;
+}
+.section-title {
+  font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800; line-height: 1.15;
+  background: linear-gradient(135deg, var(--text), var(--text-sub));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+.section-title span {
+  background: linear-gradient(135deg, var(--royal-blue), var(--neon));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.section-sub {
+  font-size: 1rem; color: var(--text-sub); max-width: 580px; line-height: 1.7;
+  margin-bottom: 3rem;
+}
+.text-center { text-align: center; }
+.text-center .section-label { justify-content: center; }
+.text-center .section-sub { margin-left: auto; margin-right: auto; }
+
+/* Fade-in animations */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ===================== HERO ===================== */
+#hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 120px 5% 80px; position: relative;
+  background: radial-gradient(ellipse 80% 70% at 50% -10%, rgba(26,63,219,0.2) 0%, transparent 70%),
+              var(--bg);
+}
+.hero-particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.hero-particle {
+  position: absolute; width: 2px; height: 2px; border-radius: 50%;
+  background: var(--neon); animation: floatParticle linear infinite;
+  opacity: 0.6;
+}
+@keyframes floatParticle {
+  0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-100px) translateX(var(--drift)); opacity: 0; }
+}
+
+/* Grid lines decoration */
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(26,63,219,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,63,219,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+}
+
+.hero-inner {
+  max-width: 1300px; width: 100%; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 18px; border-radius: 99px; font-size: 0.78rem; font-weight: 600;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  color: var(--neon); letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 1.5rem; backdrop-filter: blur(10px);
+}
+.hero-badge-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--neon);
+  animation: pulse 2s ease infinite; box-shadow: 0 0 8px var(--neon);
+}
+@keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.5);opacity:0.6} }
+
+.hero-title {
+  font-family: 'Poppins', sans-serif; font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  font-weight: 900; line-height: 1.08; margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--text) 0%, var(--text) 50%, var(--neon) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-title .highlight {
+  background: linear-gradient(135deg, var(--royal-blue), var(--neon));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  position: relative;
+}
+.hero-sub {
+  font-size: 1.1rem; color: var(--text-sub); line-height: 1.8;
+  max-width: 500px; margin-bottom: 2.5rem;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.hero-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+.hero-stat-item {}
+.hero-stat-num {
+  font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--royal-blue), var(--neon));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+/* Hero illustration */
+.hero-visual {
+  position: relative; display: flex; align-items: center; justify-content: center;
+}
+.hero-orb {
+  width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%,
+    rgba(63,114,255,0.25) 0%,
+    rgba(26,63,219,0.15) 40%,
+    rgba(0,229,255,0.05) 70%,
+    transparent 100%);
+  border: 1px solid rgba(63,114,255,0.2);
+  position: relative; display: flex; align-items: center; justify-content: center;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+@keyframes orbFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+.hero-orb::before {
+  content: ''; position: absolute; inset: -20px; border-radius: 50%;
+  border: 1px solid rgba(0,229,255,0.1);
+  animation: orbFloat 8s ease-in-out infinite reverse;
+}
+.hero-orb::after {
+  content: ''; position: absolute; inset: -40px; border-radius: 50%;
+  border: 1px solid rgba(26,63,219,0.08);
+}
+.hero-orb-inner {
+  width: 280px; height: 280px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(26,63,219,0.3), rgba(0,229,255,0.15));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(63,114,255,0.3);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; text-align: center; padding: 2rem;
+}
+.hero-orb-icon {
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, var(--royal-blue), var(--neon));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+.hero-orb-text {
+  font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700;
+  color: var(--text); letter-spacing: 1px;
+}
+.hero-orb-sub { font-size: 0.78rem; color: var(--text-muted); }
+
+/* Floating cards around orb */
+.float-card {
+  position: absolute; background: var(--card-bg);
+  backdrop-filter: blur(20px); border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm); padding: 14px 18px;
+  display: flex; align-items: center; gap: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  animation: orbFloat 6s ease-in-out infinite;
+}
+.float-card:nth-child(2) { top: 5%; right: -5%; animation-delay: -2s; }
+.float-card:nth-child(3) { bottom: 15%; left: -8%; animation-delay: -4s; }
+.float-card:nth-child(4) { bottom: 5%; right: 0%; animation-delay: -1s; }
+.float-card-icon { font-size: 1.6rem; }
+.float-card-info { }
+.float-card-num { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); }
+.float-card-label { font-size: 0.72rem; color: var(--text-muted); }
+
+/* ===================== ABOUT ===================== */
+#about { padding: 120px 5%; }
+.about-inner {
+  max-width: 1300px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+.about-visual { position: relative; }
+.about-img-wrap {
+  width: 100%; aspect-ratio: 1; border-radius: 30px; overflow: hidden;
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow), var(--neon));
+  padding: 2px; position: relative;
+}
+.about-img-inner {
+  width: 100%; height: 100%; border-radius: 28px; overflow: hidden;
+  background: var(--surface);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1.5rem; padding: 2rem;
+}
+.about-graphic { font-size: 5rem; }
+.about-graphic-text {
+  font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.2rem;
+  text-align: center; color: var(--text);
+}
+.about-badge {
+  position: absolute; bottom: -20px; right: -20px;
+  background: linear-gradient(135deg, var(--royal-blue), var(--neon));
+  border-radius: var(--radius-sm); padding: 18px 24px; text-align: center;
+  box-shadow: var(--shadow-blue);
+}
+.about-badge-num {
+  font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: #fff;
+}
+.about-badge-label { font-size: 0.75rem; color: rgba(255,255,255,0.8); }
+
+.about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+.about-feat {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm); padding: 1rem; transition: var(--transition);
+}
+.about-feat:hover { background: var(--glass-hover); border-color: rgba(26,63,219,0.3); transform: translateY(-3px); }
+.about-feat-icon {
+  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; color: #fff;
+}
+.about-feat-title { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.about-feat-sub { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+
+/* Stats */
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+  max-width: 1300px; margin: 4rem auto 0;
+  padding: 0 5%;
+}
+.stat-card {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); padding: 2rem; text-align: center;
+  backdrop-filter: blur(10px); transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+.stat-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--royal-blue), var(--neon));
+  transform: scaleX(0); transition: transform 0.4s ease; transform-origin: left;
+}
+.stat-card:hover::before { transform: scaleX(1); }
+.stat-card:hover { background: var(--glass-hover); transform: translateY(-5px); }
+.stat-num {
+  font-family: 'Poppins', sans-serif; font-size: 2.8rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--royal-blue), var(--neon));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+.stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; }
+
+/* ===================== SERVICES ===================== */
+#services {
+  padding: 120px 5%;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(26,63,219,0.08) 0%, transparent 70%);
+}
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem;
+  max-width: 1300px; margin: 0 auto;
+}
+.service-card {
+  background: var(--card-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); padding: 2.5rem 2rem;
+  backdrop-filter: blur(20px); transition: var(--transition);
+  position: relative; overflow: hidden; group: true;
+}
+.service-card::after {
+  content: ''; position: absolute; inset: 0; border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(26,63,219,0.06), rgba(0,229,255,0.06));
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.service-card:hover { transform: translateY(-10px); border-color: rgba(26,63,219,0.4); box-shadow: var(--shadow-blue); }
+.service-card:hover::after { opacity: 1; }
+.service-icon-wrap {
+  width: 65px; height: 65px; border-radius: 18px; margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; color: #fff; position: relative; z-index: 1;
+  transition: var(--transition); box-shadow: 0 8px 25px rgba(26,63,219,0.4);
+}
+.service-card:hover .service-icon-wrap {
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 12px 35px rgba(26,63,219,0.6);
+}
+.service-card-num {
+  position: absolute; top: 1.5rem; right: 1.5rem; z-index: 1;
+  font-family: 'Poppins', sans-serif; font-size: 3.5rem; font-weight: 900;
+  color: rgba(26,63,219,0.08); line-height: 1;
+}
+.service-title {
+  font-family: 'Poppins', sans-serif; font-size: 1.15rem; font-weight: 700;
+  color: var(--text); margin-bottom: 0.8rem; position: relative; z-index: 1;
+}
+.service-desc {
+  font-size: 0.88rem; color: var(--text-muted); line-height: 1.7;
+  position: relative; z-index: 1;
+}
+.service-tags {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.5rem; position: relative; z-index: 1;
+}
+.service-tag {
+  padding: 4px 12px; border-radius: 99px; font-size: 0.72rem; font-weight: 500;
+  background: var(--glass); border: 1px solid var(--glass-border); color: var(--neon);
+}
+.service-arrow {
+  position: absolute; bottom: 1.5rem; right: 1.5rem; width: 36px; height: 36px;
+  border-radius: 50%; background: var(--glass); border: 1px solid var(--glass-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); font-size: 0.9rem; transition: var(--transition); z-index: 1;
+}
+.service-card:hover .service-arrow {
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow));
+  color: #fff; border-color: transparent; transform: rotate(-45deg);
+}
+
+/* ===================== PORTFOLIO ===================== */
+#portfolio { padding: 120px 5%; }
+.portfolio-filter {
+  display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center;
+  margin-bottom: 3rem;
+}
+.filter-btn {
+  padding: 9px 22px; border-radius: 99px; font-size: 0.82rem; font-weight: 600;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  color: var(--text-sub); transition: var(--transition); letter-spacing: 0.5px;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow));
+  color: #fff; border-color: transparent;
+  box-shadow: 0 4px 20px rgba(26,63,219,0.4);
+}
+.portfolio-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  max-width: 1300px; margin: 0 auto;
+}
+.portfolio-card {
+  border-radius: var(--radius); overflow: hidden; position: relative;
+  aspect-ratio: 4/3; cursor: none;
+  background: var(--surface); border: 1px solid var(--glass-border);
+  transition: var(--transition);
+}
+.portfolio-card:hover { transform: scale(1.02); box-shadow: var(--shadow-blue); border-color: rgba(26,63,219,0.4); }
+.portfolio-img {
+  width: 100%; height: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1rem;
+  background: linear-gradient(135deg, var(--bg3), var(--surface));
+  font-size: 4rem; transition: transform 0.5s ease;
+}
+.portfolio-card:hover .portfolio-img { transform: scale(1.08); }
+.portfolio-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(6,10,24,0.95) 0%, rgba(6,10,24,0.4) 60%, transparent 100%);
+  opacity: 0; transition: opacity 0.4s ease;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 1.5rem;
+}
+.portfolio-card:hover .portfolio-overlay { opacity: 1; }
+.portfolio-cat {
+  font-size: 0.72rem; color: var(--neon); font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;
+}
+.portfolio-name {
+  font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 700; color: #fff;
+  margin-bottom: 0.5rem;
+}
+.portfolio-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; color: rgba(255,255,255,0.7); transition: color 0.3s ease;
+}
+.portfolio-link:hover { color: var(--neon); }
+.portfolio-img-label {
+  font-family: 'Poppins', sans-serif; font-size: 0.9rem;
+  font-weight: 600; color: var(--text-sub);
+}
+
+/* ===================== TESTIMONIALS ===================== */
+#testimonials {
+  padding: 120px 5%;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,229,255,0.05) 0%, transparent 70%);
+}
+.testimonial-slider { position: relative; max-width: 1300px; margin: 0 auto; overflow: hidden; }
+.testimonial-track {
+  display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.testimonial-slide {
+  min-width: 33.333%; padding: 0 0.75rem;
+}
+.testimonial-card {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); padding: 2rem 1.8rem;
+  backdrop-filter: blur(20px); transition: var(--transition);
+  height: 100%; position: relative;
+}
+.testimonial-card:hover { background: var(--glass-hover); border-color: rgba(26,63,219,0.3); transform: translateY(-5px); }
+.testimonial-quote { font-size: 2.5rem; color: var(--neon); line-height: 1; margin-bottom: 1rem; opacity: 0.6; }
+.testimonial-text {
+  font-size: 0.9rem; color: var(--text-sub); line-height: 1.8;
+  margin-bottom: 1.5rem; font-style: italic;
+}
+.testimonial-stars { color: #ffd700; font-size: 0.85rem; margin-bottom: 1.2rem; letter-spacing: 2px; }
+.testimonial-author { display: flex; gap: 12px; align-items: center; }
+.testimonial-avatar {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: #fff; font-weight: 700; flex-shrink: 0;
+  font-family: 'Poppins', sans-serif;
+}
+.testimonial-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+.testimonial-role { font-size: 0.75rem; color: var(--text-muted); }
+.slider-controls {
+  display: flex; gap: 1rem; justify-content: center; align-items: center; margin-top: 2.5rem;
+}
+.slider-btn {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--glass-border);
+  background: var(--glass); color: var(--text); font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition); cursor: none;
+}
+.slider-btn:hover {
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow));
+  color: #fff; border-color: transparent; box-shadow: var(--shadow-blue);
+}
+.slider-dots { display: flex; gap: 8px; }
+.slider-dot {
+  width: 8px; height: 8px; border-radius: 99px; background: var(--glass-border);
+  transition: all 0.3s ease; cursor: none;
+}
+.slider-dot.active { width: 24px; background: linear-gradient(90deg, var(--royal-blue), var(--neon)); }
+
+/* ===================== TEAM ===================== */
+#team { padding: 120px 5%; }
+.team-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem;
+  max-width: 1300px; margin: 0 auto;
+}
+.team-card {
+  background: var(--card-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); padding: 2.5rem 1.5rem;
+  text-align: center; transition: var(--transition);
+  backdrop-filter: blur(20px); position: relative; overflow: hidden;
+}
+.team-card::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 60%; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--royal-blue), var(--neon), transparent);
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.team-card:hover::before { opacity: 1; }
+.team-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-blue); border-color: rgba(26,63,219,0.3); }
+.team-avatar {
+  width: 90px; height: 90px; border-radius: 50%; margin: 0 auto 1.2rem;
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem; color: #fff; font-weight: 700;
+  font-family: 'Poppins', sans-serif; position: relative;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 0 0 3px rgba(26,63,219,0.3);
+  transition: var(--transition);
+}
+.team-card:hover .team-avatar {
+  box-shadow: 0 0 0 3px var(--royal-blue), 0 0 30px rgba(26,63,219,0.4);
+}
+.team-name {
+  font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700;
+  color: var(--text); margin-bottom: 4px;
+}
+.team-role {
+  font-size: 0.78rem; color: var(--neon); font-weight: 500; letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: 1.2rem;
+}
+.team-socials { display: flex; gap: 10px; justify-content: center; }
+.team-social {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; color: var(--text-muted); transition: var(--transition);
+}
+.team-social:hover { background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow)); color: #fff; border-color: transparent; }
+
+/* ===================== CONTACT ===================== */
+#contact {
+  padding: 120px 5%;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(26,63,219,0.1) 0%, transparent 70%);
+}
+.contact-inner {
+  display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; align-items: start;
+  max-width: 1300px; margin: 0 auto;
+}
+.contact-info-items { display: flex; flex-direction: column; gap: 1.2rem; margin: 2rem 0; }
+.contact-info-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm); padding: 1.2rem 1.5rem;
+  transition: var(--transition);
+}
+.contact-info-item:hover { background: var(--glass-hover); border-color: rgba(26,63,219,0.3); }
+.contact-info-icon {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; color: #fff;
+}
+.contact-info-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.contact-info-value { font-size: 0.95rem; font-weight: 500; color: var(--text); }
+.contact-map {
+  margin-top: 1.5rem; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--glass-border); height: 180px;
+  background: var(--glass); display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 0.5rem; color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.contact-form {
+  background: var(--card-bg); border: 1px solid var(--glass-border);
+  border-radius: var(--radius); padding: 2.5rem;
+  backdrop-filter: blur(20px);
+}
+.form-title {
+  font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 700;
+  color: var(--text); margin-bottom: 0.5rem;
+}
+.form-sub { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 2rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-label { font-size: 0.8rem; font-weight: 500; color: var(--text-sub); margin-bottom: 8px; display: block; letter-spacing: 0.5px; }
+.form-input, .form-textarea {
+  width: 100%; padding: 12px 16px; border-radius: var(--radius-sm);
+  background: var(--input-bg); border: 1px solid var(--glass-border);
+  color: var(--text); font-size: 0.9rem; outline: none;
+  transition: var(--transition);
+}
+.form-input:focus, .form-textarea:focus {
+  border-color: var(--royal-blue);
+  box-shadow: 0 0 0 3px rgba(26,63,219,0.15);
+  background: var(--glass-hover);
+}
+.form-textarea { resize: vertical; min-height: 120px; }
+.form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); }
+.form-submit {
+  width: 100%; padding: 15px; border-radius: 99px; font-size: 1rem; font-weight: 600;
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow));
+  color: #fff; transition: var(--transition);
+  box-shadow: 0 6px 25px rgba(26,63,219,0.45); letter-spacing: 0.5px;
+}
+.form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 35px rgba(26,63,219,0.6); }
+
+/* ===================== FOOTER ===================== */
+#footer {
+  background: var(--footer-bg); padding: 80px 5% 30px;
+  border-top: 1px solid var(--glass-border);
+}
+.footer-inner {
+  max-width: 1300px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+  margin-bottom: 3rem;
+}
+.footer-brand {}
+.footer-logo {
+  font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.6rem;
+  background: linear-gradient(135deg, var(--royal-blue), var(--neon));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem; display: block;
+}
+.footer-tagline {
+  font-size: 0.88rem; color: var(--text-muted); line-height: 1.7;
+  margin-bottom: 1.5rem; max-width: 260px;
+}
+.footer-socials { display: flex; gap: 10px; }
+.footer-social {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.95rem; color: var(--text-muted); transition: var(--transition);
+}
+.footer-social:hover { background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow)); color: #fff; border-color: transparent; transform: translateY(-3px); }
+.footer-col-title {
+  font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 700;
+  color: var(--text); margin-bottom: 1.2rem; letter-spacing: 0.5px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-links a {
+  font-size: 0.85rem; color: var(--text-muted); transition: var(--transition);
+  display: flex; align-items: center; gap: 8px;
+}
+.footer-links a:hover { color: var(--neon); transform: translateX(5px); }
+.footer-links a::before { content: '›'; color: var(--royal-blue); }
+.footer-bottom {
+  max-width: 1300px; margin: 0 auto;
+  border-top: 1px solid var(--glass-border); padding-top: 2rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-copy { font-size: 0.82rem; color: var(--text-muted); }
+.footer-bottom-links { display: flex; gap: 1.5rem; }
+.footer-bottom-links a { font-size: 0.82rem; color: var(--text-muted); transition: color 0.3s; }
+.footer-bottom-links a:hover { color: var(--neon); }
+
+/* ===================== WHATSAPP FLOAT ===================== */
+#whatsapp-float {
+  position: fixed; bottom: 30px; right: 30px; z-index: 900;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; color: #fff; box-shadow: 0 6px 25px rgba(37,211,102,0.5);
+  transition: var(--transition); animation: waFloat 3s ease-in-out infinite;
+}
+#whatsapp-float:hover { transform: scale(1.15); box-shadow: 0 10px 35px rgba(37,211,102,0.7); }
+@keyframes waFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+#whatsapp-float::after {
+  content: ''; position: absolute; inset: -5px; border-radius: 50%;
+  border: 2px solid rgba(37,211,102,0.4); animation: waRing 2s ease infinite;
+}
+@keyframes waRing { 0%{transform:scale(1);opacity:1} 100%{transform:scale(1.5);opacity:0} }
+
+/* ===================== BACK TO TOP ===================== */
+#back-top {
+  position: fixed; bottom: 30px; left: 30px; z-index: 900;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text); font-size: 1rem; transition: var(--transition);
+  opacity: 0; pointer-events: none; cursor: none; backdrop-filter: blur(10px);
+}
+#back-top.visible { opacity: 1; pointer-events: auto; }
+#back-top:hover { background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow)); color: #fff; border-color: transparent; }
+
+/* ===================== DECORATIVE ===================== */
+.deco-circle {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(26,63,219,0.12) 0%, transparent 70%);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1100px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero-visual { display: none; }
+  .hero-sub { margin: 0 auto 2.5rem; }
+  .hero-btns { justify-content: center; }
+  .hero-stats { justify-content: center; }
+  .about-inner { grid-template-columns: 1fr; }
+  .about-visual { max-width: 400px; margin: 0 auto; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .contact-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .btn-nav { display: none; }
+  .hamburger { display: flex; }
+  .services-grid { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .about-features { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .testimonial-slide { min-width: 100%; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  #hero { padding: 100px 5% 60px; }
+}
+@media (max-width: 480px) {
+  .team-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-btns { flex-direction: column; align-items: center; }
+}
+
+/* ===================== NOTIFICATION ===================== */
+.toast {
+  position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: linear-gradient(135deg, var(--royal-blue), var(--blue-glow));
+  color: #fff; padding: 14px 28px; border-radius: 99px; font-size: 0.9rem;
+  font-weight: 500; z-index: 9000; opacity: 0; transition: all 0.4s ease;
+  pointer-events: none; box-shadow: var(--shadow-blue); white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div id="scroll-progress"></div>
+
+<!-- Custom Cursor -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ===================== LOADER ===================== -->
+<div id="loader">
+  <div class="loader-logo">SAAD ABBASI</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-dots">
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+    <div class="loader-dot"></div>
+  </div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">SAAD<span>.</span>ABBASI</a>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-theme" id="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+      <a href="#contact" class="btn-nav">Hire Us</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu">
+  <a href="#hero" class="mobile-link">Home</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#portfolio" class="mobile-link">Portfolio</a>
+  <a href="#team" class="mobile-link">Team</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="hero-badge-dot"></span>
+        Premium Digital Agency
+      </div>
+      <h1 class="hero-title reveal">
+        Welcome to<br>
+        <span class="highlight">SAAD ABBASI</span>
+      </h1>
+      <p class="hero-sub reveal">
+        We craft extraordinary digital experiences — from stunning websites to powerful brands.
+        Fueling your business growth with innovation, creativity, and cutting-edge technology.
+      </p>
+      <div class="hero-btns reveal">
+        <a href="#services" class="btn-primary">
+          <i class="fas fa-rocket"></i> Get Started
+        </a>
+        <a href="#contact" class="btn-outline">
+          <i class="fas fa-comment-dots"></i> Contact Us
+        </a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="hero-stat-item">
+          <div class="hero-stat-num" data-count="250">0</div>
+          <div class="hero-stat-label">Projects Completed</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num" data-count="120">0</div>
+          <div class="hero-stat-label">Happy Clients</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num" data-count="5">0</div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-orb">
+        <div class="float-card">
+          <div class="float-card-icon">⚡</div>
+          <div class="float-card-info">
+            <div class="float-card-num">Fast</div>
+            <div class="float-card-label">Delivery</div>
+          </div>
+        </div>
+        <div class="float-card">
+          <div class="float-card-icon">🎯</div>
+          <div class="float-card-info">
+            <div class="float-card-num">98%</div>
+            <div class="float-card-label">Satisfaction</div>
+          </div>
+        </div>
+        <div class="float-card">
+          <div class="float-card-icon">🏆</div>
+          <div class="float-card-info">
+            <div class="float-card-num">Award</div>
+            <div class="float-card-label">Winning</div>
+          </div>
+        </div>
+        <div class="hero-orb-inner">
+          <div class="hero-orb-icon">💎</div>
+          <div class="hero-orb-text">SAAD ABBASI</div>
+          <div class="hero-orb-sub">Digital Excellence</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-visual reveal-left">
+      <div class="about-img-wrap">
+        <div class="about-img-inner">
+          <div class="about-graphic" style="font-size:6rem">🚀</div>
+          <div class="about-graphic-text">Driving Digital Innovation</div>
+          <p style="font-size:0.82rem;color:var(--text-muted);text-align:center;max-width:200px">
+            Transforming ideas into powerful digital realities since 2020
+          </p>
+        </div>
+      </div>
+      <div class="about-badge">
+        <div class="about-badge-num">5+</div>
+        <div class="about-badge-label">Years of<br>Excellence</div>
+      </div>
+    </div>
+
+    <div class="about-content reveal-right">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">We Build <span>Digital Futures</span> With Purpose</h2>
+      <p style="font-size:0.95rem;color:var(--text-sub);line-height:1.8;margin-bottom:1.5rem">
+        SAAD ABBASI is a premium digital agency dedicated to transforming businesses through
+        creativity, innovation, and technology. We believe in crafting digital solutions that
+        don't just look great — they drive measurable results and sustainable growth.
+      </p>
+      <p style="font-size:0.95rem;color:var(--text-sub);line-height:1.8;margin-bottom:2rem">
+        Our team of passionate experts combines strategic thinking with cutting-edge execution,
+        delivering projects that exceed expectations every single time.
+      </p>
+      <div class="about-features">
+        <div class="about-feat">
+          <div class="about-feat-icon"><i class="fas fa-lightbulb"></i></div>
+          <div>
+            <div class="about-feat-title">Creative Vision</div>
+            <div class="about-feat-sub">Innovative solutions tailored to your brand</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon"><i class="fas fa-shield-alt"></i></div>
+          <div>
+            <div class="about-feat-title">Trusted Partner</div>
+            <div class="about-feat-sub">Reliable, transparent, and committed</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon"><i class="fas fa-chart-line"></i></div>
+          <div>
+            <div class="about-feat-title">Digital Growth</div>
+            <div class="about-feat-sub">Data-driven strategies for real results</div>
+          </div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon"><i class="fas fa-cogs"></i></div>
+          <div>
+            <div class="about-feat-title">Innovation First</div>
+            <div class="about-feat-sub">Always ahead of the digital curve</div>
+          </div>
+        </div>
+      </div>
+      <a href="#contact" class="btn-primary" style="display:inline-flex">
+        <i class="fas fa-arrow-right"></i> Work With Us
+      </a>
+    </div>
+  </div>
+
+  <!-- Stats Row -->
+  <div class="stats-grid" style="margin-top:5rem">
+    <div class="stat-card reveal">
+      <div class="stat-num" data-count="250">0</div>
+      <div class="stat-label">Projects Delivered</div>
+    </div>
+    <div class="stat-card reveal" style="transition-delay:0.1s">
+      <div class="stat-num" data-count="120">0</div>
+      <div class="stat-label">Happy Clients</div>
+    </div>
+    <div class="stat-card reveal" style="transition-delay:0.2s">
+      <div class="stat-num" data-count="98">0</div>
+      <div class="stat-label">Client Satisfaction %</div>
+    </div>
+    <div class="stat-card reveal" style="transition-delay:0.3s">
+      <div class="stat-num" data-count="15">0</div>
+      <div class="stat-label">Team Experts</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES ===================== -->
+<section id="services">
+  <div class="section-wrap">
+    <div class="text-center reveal">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Our <span>Premium Services</span></h2>
+      <p class="section-sub">
+        End-to-end digital solutions crafted with precision, passion, and cutting-edge technology to elevate your brand.
+      </p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal">
+        <span class="service-card-num">01</span>
+        <div class="service-icon-wrap"><i class="fas fa-code"></i></div>
+        <div class="service-title">Web Development</div>
+        <p class="service-desc">Custom websites and web applications built with the latest technologies. Fast, secure, SEO-optimized, and fully responsive across all devices.</p>
+        <div class="service-tags">
+          <span class="service-tag">React</span>
+          <span class="service-tag">Next.js</span>
+          <span class="service-tag">Node.js</span>
+        </div>
+        <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+
+      <div class="service-card reveal" style="transition-delay:0.1s">
+        <span class="service-card-num">02</span>
+        <div class="service-icon-wrap" style="background:linear-gradient(135deg,#9c27b0,#e91e63)"><i class="fas fa-paint-brush"></i></div>
+        <div class="service-title">Graphic Designing</div>
+        <p class="service-desc">Stunning visual identities, logos, marketing materials, and UI/UX designs that capture your brand's essence and leave a lasting impression.</p>
+        <div class="service-tags">
+          <span class="service-tag">Logo Design</span>
+          <span class="service-tag">UI/UX</span>
+          <span class="service-tag">Print</span>
+        </div>
+        <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+
+      <div class="service-card reveal" style="transition-delay:0.2s">
+        <span class="service-card-num">03</span>
+        <div class="service-icon-wrap" style="background:linear-gradient(135deg,#ff5722,#ff9800)"><i class="fas fa-bullhorn"></i></div>
+        <div class="service-title">Digital Marketing</div>
+        <p class="service-desc">Data-driven campaigns across all digital channels. SEO, PPC, content marketing, and analytics to maximize your reach, traffic, and conversions.</p>
+        <div class="service-tags">
+          <span class="service-tag">SEO</span>
+          <span class="service-tag">PPC</span>
+          <span class="service-tag">Analytics</span>
+        </div>
+        <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+
+      <div class="service-card reveal" style="transition-delay:0.3s">
+        <span class="service-card-num">04</span>
+        <div class="service-icon-wrap" style="background:linear-gradient(135deg,#00897b,#00e5ff)"><i class="fas fa-shopping-cart"></i></div>
+        <div class="service-title">E-Commerce Stores</div>
+        <p class="service-desc">High-converting online stores built on Shopify, WooCommerce, and custom platforms. Complete with payment gateways, inventory management, and analytics.</p>
+        <div class="service-tags">
+          <span class="service-tag">Shopify</span>
+          <span class="service-tag">WooCommerce</span>
+          <span class="service-tag">Custom</span>
+        </div>
+        <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+
+      <div class="service-card reveal" style="transition-delay:0.4s">
+        <span class="service-card-num">05</span>
+        <div class="service-icon-wrap" style="background:linear-gradient(135deg,#ffd700,#ff6f00)"><i class="fas fa-star"></i></div>
+        <div class="service-title">Branding</div>
+        <p class="service-desc">Complete brand identity systems — from strategy and naming to visual language, brand guidelines, and positioning that sets you apart from competition.</p>
+        <div class="service-tags">
+          <span class="service-tag">Strategy</span>
+          <span class="service-tag">Identity</span>
+          <span class="service-tag">Guidelines</span>
+        </div>
+        <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+
+      <div class="service-card reveal" style="transition-delay:0.5s">
+        <span class="service-card-num">06</span>
+        <div class="service-icon-wrap" style="background:linear-gradient(135deg,#e91e63,#9c27b0)"><i class="fas fa-hashtag"></i></div>
+        <div class="service-title">Social Media Management</div>
+        <p class="service-desc">Strategic social media presence management — content creation, scheduling, community building, influencer outreach, and growth campaigns that build loyal audiences.</p>
+        <div class="service-tags">
+          <span class="service-tag">Content</span>
+          <span class="service-tag">Growth</span>
+          <span class="service-tag">Ads</span>
+        </div>
+        <div class="service-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PORTFOLIO ===================== -->
+<section id="portfolio">
+  <div class="section-wrap">
+    <div class="text-center reveal">
+      <div class="section-label">Our Work</div>
+      <h2 class="section-title">Featured <span>Portfolio</span></h2>
+      <p class="section-sub">A curated showcase of our finest digital work — each project a story of creativity, strategy, and results.</p>
+    </div>
+
+    <div class="portfolio-filter">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="web">Web Dev</button>
+      <button class="filter-btn" data-filter="design">Design</button>
+      <button class="filter-btn" data-filter="marketing">Marketing</button>
+      <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-card reveal" data-cat="web">
+        <div class="portfolio-img" style="background:linear-gradient(135deg,#0a1628,#1a3fdb20)">
+          <span>🌐</span>
+          <div class="portfolio-img-label">Corporate Portal</div>
+        </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">Web Development</div>
+          <div class="portfolio-name">TechCorp Enterprise Portal</div>
+          <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="portfolio-card reveal" data-cat="design" style="transition-delay:0.1s">
+        <div class="portfolio-img" style="background:linear-gradient(135deg,#1a0035,#9c27b030)">
+          <span>🎨</span>
+          <div class="portfolio-img-label">Brand Identity</div>
+        </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">Graphic Design</div>
+          <div class="portfolio-name">LuxeBrand Identity System</div>
+          <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="portfolio-card reveal" data-cat="ecommerce" style="transition-delay:0.2s">
+        <div class="portfolio-img" style="background:linear-gradient(135deg,#001a15,#00897b30)">
+          <span>🛍️</span>
+          <div class="portfolio-img-label">E-Commerce Store</div>
+        </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">E-Commerce</div>
+          <div class="portfolio-name">FashionHub Online Store</div>
+          <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="portfolio-card reveal" data-cat="marketing" style="transition-delay:0.1s">
+        <div class="portfolio-img" style="background:linear-gradient(135deg,#1a0800,#ff572230)">
+          <span>📈</span>
+          <div class="portfolio-img-label">Marketing Campaign</div>
+        </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">Digital Marketing</div>
+          <div class="portfolio-name">GrowthX SEO Campaign</div>
+          <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="portfolio-card reveal" data-cat="web" style="transition-delay:0.2s">
+        <div class="portfolio-img" style="background:linear-gradient(135deg,#001020,#00e5ff20)">
+          <span>📱</span>
+          <div class="portfolio-img-label">Mobile App UI</div>
+        </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">Web Development</div>
+          <div class="portfolio-name">FinTech Mobile Dashboard</div>
+          <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="portfolio-card reveal" data-cat="design" style="transition-delay:0.3s">
+        <div class="portfolio-img" style="background:linear-gradient(135deg,#1a1200,#ffd70030)">
+          <span>⭐</span>
+          <div class="portfolio-img-label">Brand Strategy</div>
+        </div>
+        <div class="portfolio-overlay">
+          <div class="portfolio-cat">Branding</div>
+          <div class="portfolio-name">PremiumEdge Brand Launch</div>
+          <a href="#" class="portfolio-link">View Project <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section id="testimonials">
+  <div class="section-wrap">
+    <div class="text-center reveal">
+      <div class="section-label">Client Voices</div>
+      <h2 class="section-title">What Our <span>Clients Say</span></h2>
+      <p class="section-sub">Real stories from real clients. We let our work — and their words — speak for themselves.</p>
+    </div>
+
+    <div class="testimonial-slider reveal">
+      <div class="testimonial-track" id="testimonial-track">
+
+        <div class="testimonial-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">SAAD ABBASI completely transformed our online presence. The website they built exceeded all our expectations in terms of design and performance. Our conversions tripled within 2 months!</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">AK</div>
+              <div>
+                <div class="testimonial-name">Ahmed Khan</div>
+                <div class="testimonial-role">CEO, TechVision Pakistan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">Incredible team with exceptional talent. They created our complete brand identity from scratch and we couldn't be happier. Professional, creative, and delivered on time.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">SR</div>
+              <div>
+                <div class="testimonial-name">Sara Raza</div>
+                <div class="testimonial-role">Founder, LuxeLifestyle</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">Our e-commerce store went from zero to generating 6-figure revenue in just 4 months. SAAD ABBASI's marketing expertise and e-commerce setup was a game-changer for our business.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">MI</div>
+              <div>
+                <div class="testimonial-name">Muhammad Irfan</div>
+                <div class="testimonial-role">Owner, FashionHub</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">The social media management service is top notch. Our Instagram followers grew from 2K to 50K in 6 months. The content quality and engagement is absolutely outstanding.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">ZA</div>
+              <div>
+                <div class="testimonial-name">Zara Ashraf</div>
+                <div class="testimonial-role">Influencer & Entrepreneur</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">Working with SAAD ABBASI was a breeze. They understood our vision perfectly and delivered a digital marketing campaign that brought us record-breaking traffic and sales.</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">HS</div>
+              <div>
+                <div class="testimonial-name">Hassan Sheikh</div>
+                <div class="testimonial-role">Marketing Director, GrowthCo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="slider-controls">
+        <button class="slider-btn" id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+        <div class="slider-dots" id="slider-dots"></div>
+        <button class="slider-btn" id="next-btn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TEAM ===================== -->
+<section id="team">
+  <div class="section-wrap">
+    <div class="text-center reveal">
+      <div class="section-label">The Crew</div>
+      <h2 class="section-title">Meet Our <span>Expert Team</span></h2>
+      <p class="section-sub">A group of passionate professionals united by a shared mission: delivering digital excellence that drives real-world results.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar">SA</div>
+        <div class="team-name">Saad Abbasi</div>
+        <div class="team-role">CEO & Founder</div>
+        <div class="team-socials">
+          <a href="#" class="team-social"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="team-social"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="team-social"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="team-card reveal" style="transition-delay:0.1s">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#9c27b0,#e91e63)">AK</div>
+        <div class="team-name">Ali Khan</div>
+        <div class="team-role">Lead Developer</div>
+        <div class="team-socials">
+          <a href="#" class="team-social"><i class="fab fa-github"></i></a>
+          <a href="#" class="team-social"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="team-social"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="team-card reveal" style="transition-delay:0.2s">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#ff5722,#ffd700)">FR</div>
+        <div class="team-name">Fatima Raza</div>
+        <div class="team-role">Creative Designer</div>
+        <div class="team-socials">
+          <a href="#" class="team-social"><i class="fab fa-behance"></i></a>
+          <a href="#" class="team-social"><i class="fab fa-dribbble"></i></a>
+          <a href="#" class="team-social"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="team-card reveal" style="transition-delay:0.3s">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#00897b,#00e5ff)">OM</div>
+        <div class="team-name">Omar Malik</div>
+        <div class="team-role">Marketing Strategist</div>
+        <div class="team-socials">
+          <a href="#" class="team-social"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="team-social"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="team-social"><i class="fas fa-globe"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="text-center reveal" style="margin-bottom:3.5rem">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's <span>Build Together</span></h2>
+      <p class="section-sub">Ready to take your business to the next level? Let's talk. We'd love to hear about your project.</p>
+    </div>
+
+    <div class="contact-inner">
+      <div class="contact-left reveal-left">
+        <h3 style="font-family:'Poppins',sans-serif;font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:0.5rem">Contact Information</h3>
+        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:0.5rem">Reach us through any of these channels — we respond fast.</p>
+
+        <div class="contact-info-items">
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="contact-info-label">Email</div>
+              <div class="contact-info-value">hello@saadabbasi.com</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon" style="background:linear-gradient(135deg,#25d366,#128c7e)"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <div class="contact-info-label">WhatsApp</div>
+              <div class="contact-info-value">+92 300 0000000</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon" style="background:linear-gradient(135deg,#ff5722,#ff9800)"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="contact-info-label">Location</div>
+              <div class="contact-info-value">Islamabad, Pakistan</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon" style="background:linear-gradient(135deg,#9c27b0,#e91e63)"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="contact-info-label">Working Hours</div>
+              <div class="contact-info-value">Mon – Sat: 9 AM – 8 PM PKT</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-map">
+          <span style="font-size:2rem">📍</span>
+          <span>Islamabad, Pakistan</span>
+          <span style="font-size:0.75rem;color:var(--text-muted)">SAAD ABBASI Digital Agency</span>
+        </div>
+
+        <a href="https://wa.me/923000000000" target="_blank" class="btn-primary" style="margin-top:1.5rem;width:100%;justify-content:center;background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 6px 25px rgba(37,211,102,0.4)">
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+      </div>
+
+      <div class="contact-form reveal-right">
+        <div class="form-title">Send Us a Message</div>
+        <div class="form-sub">Fill out the form and we'll get back to you within 24 hours.</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-input" placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Email</label>
+            <input type="email" class="form-input" placeholder="john@example.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-input" placeholder="+92 300 0000000">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Service Needed</label>
+            <input type="text" class="form-input" placeholder="Web Development...">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input type="text" class="form-input" placeholder="Tell us about your project...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Describe your project in detail. What are your goals, timeline, and budget?"></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit()">
+          <i class="fas fa-paper-plane" style="margin-right:10px"></i> Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">SAAD ABBASI</span>
+      <p class="footer-tagline">Premium digital agency crafting extraordinary digital experiences that drive real business growth.</p>
+      <div class="footer-socials">
+        <a href="#" class="footer-social"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="footer-social"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="footer-social"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="footer-social"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="footer-social"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="footer-social"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Web Development</a></li>
+        <li><a href="#services">Graphic Design</a></li>
+        <li><a href="#services">Digital Marketing</a></li>
+        <li><a href="#services">E-Commerce</a></li>
+        <li><a href="#services">Branding</a></li>
+        <li><a href="#services">Social Media</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@saadabbasi.com">hello@saadabbasi.com</a></li>
+        <li><a href="tel:+923000000000">+92 300 0000000</a></li>
+        <li><a href="#">Islamabad, Pakistan</a></li>
+        <li><a href="#">Mon–Sat: 9AM – 8PM</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 SAAD ABBASI. All Rights Reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a id="whatsapp-float" href="https://wa.me/923000000000" target="_blank" title="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Back to Top -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Toast -->
+<div class="toast" id="toast">Message sent successfully! We'll be in touch soon. 🚀</div>
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+// ===================== LOADER =====================
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }, 2000);
+});
+document.body.style.overflow = 'hidden';
+
+// ===================== CUSTOM CURSOR =====================
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursor-ring');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top = mouseY + 'px';
+});
+
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  cursorRing.style.left = ringX + 'px';
+  cursorRing.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .service-card, .portfolio-card, .team-card, .filter-btn, .slider-btn').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-expand'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-expand'));
+});
+
+// ===================== SCROLL PROGRESS =====================
+const progress = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const scroll = window.scrollY;
+  const height = document.body.scrollHeight - window.innerHeight;
+  progress.style.width = (scroll / height * 100) + '%';
+});
+
+// ===================== NAVBAR =====================
+const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) navbar.classList.add('scrolled');
+  else navbar.classList.remove('scrolled');
+
+  const backTop = document.getElementById('back-top');
+  if (window.scrollY > 400) backTop.classList.add('visible');
+  else backTop.classList.remove('visible');
+});
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+
+document.querySelectorAll('.mobile-link').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// ===================== DARK/LIGHT THEME =====================
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+
+themeToggle.addEventListener('click', () => {
+  const html = document.documentElement;
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.setAttribute('data-theme', 'light');
+    themeIcon.className = 'fas fa-sun';
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    themeIcon.className = 'fas fa-moon';
+  }
+});
+
+// ===================== PARTICLES =====================
+const particleContainer = document.getElementById('particles');
+for (let i = 0; i < 30; i++) {
+  const p = document.createElement('div');
+  p.className = 'hero-particle';
+  const size = Math.random() * 3 + 1;
+  const x = Math.random() * 100;
+  const duration = Math.random() * 20 + 15;
+  const delay = Math.random() * 20;
+  const drift = (Math.random() - 0.5) * 200;
+  p.style.cssText = `
+    left: ${x}%; bottom: 0;
+    width: ${size}px; height: ${size}px;
+    animation-duration: ${duration}s;
+    animation-delay: -${delay}s;
+    --drift: ${drift}px;
+    opacity: ${Math.random() * 0.5 + 0.2};
+  `;
+  // Alternate colors
+  if (i % 3 === 0) p.style.background = 'var(--royal-blue)';
+  if (i % 3 === 1) p.style.background = 'var(--neon)';
+  particleContainer.appendChild(p);
+}
+
+// ===================== SCROLL REVEAL =====================
+const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+reveals.forEach(el => revealObserver.observe(el));
+
+// ===================== COUNTER ANIMATION =====================
+function animateCounter(el, target, suffix='') {
+  let start = 0;
+  const duration = 2000;
+  const startTime = performance.now();
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    start = Math.floor(eased * target);
+    el.textContent = start + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+    else el.textContent = target + suffix;
+  }
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.dataset.animated) {
+      entry.target.dataset.animated = 'true';
+      const target = parseInt(entry.target.dataset.count);
+      const suffix = entry.target.dataset.suffix || (entry.target.closest('.stat-card') && entry.target.textContent.includes('%') ? '%' : '+');
+      animateCounter(entry.target, target, '+');
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// ===================== PORTFOLIO FILTER =====================
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+      if (filter === 'all' || card.dataset.cat === filter) {
+        card.style.opacity = '1'; card.style.transform = 'scale(1)';
+      } else {
+        card.style.opacity = '0.2'; card.style.transform = 'scale(0.95)';
+      }
+    });
+  });
+});
+
+// ===================== TESTIMONIAL SLIDER =====================
+const track = document.getElementById('testimonial-track');
+const slides = document.querySelectorAll('.testimonial-slide');
+const dotsContainer = document.getElementById('slider-dots');
+let currentSlide = 0;
+const slidesPerView = window.innerWidth < 768 ? 1 : 3;
+const totalGroups = Math.ceil(slides.length / slidesPerView);
+
+// Create dots
+for (let i = 0; i < totalGroups; i++) {
+  const dot = document.createElement('button');
+  dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goToSlide(i));
+  dotsContainer.appendChild(dot);
+}
+
+function goToSlide(index) {
+  currentSlide = (index + totalGroups) % totalGroups;
+  const slideWidth = slides[0].offsetWidth;
+  track.style.transform = `translateX(-${currentSlide * slideWidth * slidesPerView}px)`;
+  document.querySelectorAll('.slider-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === currentSlide);
+  });
+}
+
+document.getElementById('prev-btn').addEventListener('click', () => goToSlide(currentSlide - 1));
+document.getElementById('next-btn').addEventListener('click', () => goToSlide(currentSlide + 1));
+
+// Auto-slide
+setInterval(() => goToSlide(currentSlide + 1), 5000);
+
+// ===================== FORM SUBMIT =====================
+function handleSubmit() {
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+// ===================== SMOOTH ANCHOR SCROLL =====================
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 70;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
