@@ -1538,41 +1538,87 @@ body:hover #cursor { opacity: 1; }
         </a>
       </div>
 
-      <div class="contact-form reveal-right">
-        <div class="form-title">Send Us a Message</div>
-        <div class="form-sub">Fill out the form and we'll get back to you within 24 hours.</div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Your Name</label>
-            <input type="text" class="form-input" placeholder="John Doe">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Your Email</label>
-            <input type="email" class="form-input" placeholder="john@example.com">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Phone Number</label>
-            <input type="tel" class="form-input" placeholder="+92 300 0000000">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Service Needed</label>
-            <input type="text" class="form-input" placeholder="Web Development...">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Subject</label>
-          <input type="text" class="form-input" placeholder="Tell us about your project...">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Describe your project in detail. What are your goals, timeline, and budget?"></textarea>
-        </div>
-        <button class="form-submit" onclick="handleSubmit()">
-          <i class="fas fa-paper-plane" style="margin-right:10px"></i> Send Message
-        </button>
-      </div>
+      <form action="https://formspree.io/f/mgoqwdbj" method="POST" class="contact-form reveal-right">
+
+  <div class="form-title">Send Us a Message</div>
+  <div class="form-sub">
+    Fill out the form and we'll get back to you within 24 hours.
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">Your Name</label>
+      <input 
+        type="text" 
+        name="name"
+        class="form-input" 
+        placeholder="John Doe"
+        required
+      >
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Your Email</label>
+      <input 
+        type="email" 
+        name="email"
+        class="form-input" 
+        placeholder="john@example.com"
+        required
+      >
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label class="form-label">Phone Number</label>
+      <input 
+        type="tel" 
+        name="phone"
+        class="form-input" 
+        placeholder="+92 300 0000000"
+      >
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Service Needed</label>
+      <input 
+        type="text" 
+        name="service"
+        class="form-input" 
+        placeholder="Web Development..."
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Subject</label>
+    <input 
+      type="text" 
+      name="subject"
+      class="form-input" 
+      placeholder="Tell us about your project..."
+    >
+  </div>
+
+  <div class="form-group">
+    <label class="form-label">Message</label>
+    <textarea 
+      name="message"
+      class="form-textarea" 
+      placeholder="Describe your project in detail. What are your goals, timeline, and budget?"
+      required
+    ></textarea>
+  </div>
+
+  <input type="hidden" name="_subject" value="New Portfolio Message">
+
+  <button type="submit" class="form-submit">
+    <i class="fas fa-paper-plane" style="margin-right:10px"></i>
+    Send Message
+  </button>
+
+</form>
     </div>
   </div>
 </section>
