@@ -1583,11 +1583,31 @@ body:hover #cursor { opacity: 1; }
     <div class="form-group">
       <label class="form-label">Service Needed</label>
       <input 
-        type="text" 
-        name="service"
-        class="form-input" 
-      placeholder="Frontend Development • Web Design • Graphic Design"
-      >
+  type="text"
+  name="service"
+  class="form-input"
+  id="serviceInput"
+  placeholder="Frontend Development"
+
+/>
+<script>
+const placeholders = [
+  "Frontend Development",
+  "Web Design",
+  "Graphic Design",
+  "UI/UX Design",
+  "Portfolio Website",
+  "Modern Landing Page"
+];
+
+let index = 0;
+const input = document.getElementById("serviceInput");
+
+setInterval(() => {
+  index = (index + 1) % placeholders.length;
+  input.placeholder = placeholders[index];
+}, 2000);
+</script>
     </div>
   </div>
 
