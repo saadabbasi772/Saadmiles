@@ -1961,66 +1961,68 @@ Add this code before Contact Section
   </div>
 </section>
   <!-- =========================
-INSTAGRAM PROFILE SECTION
+IN<!-- =========================
+SMART SIMPLE ABOUT PAGE
+MATCHING YOUR WEBSITE THEME
 ========================= -->
 
-<section class="insta-profile-section">
+<section class="smart-about">
 
-  <div class="insta-container">
+  <!-- Background Glow -->
+  <div class="about-glow"></div>
 
-    <!-- LEFT IMAGE -->
-    <div class="insta-image">
-      <div class="insta-ring"></div>
+  <div class="smart-container">
 
-      <!-- YOUR PROFILE IMAGE -->
-      <!-- IMAGE PATH -->
-<img src="images/travel-map-overlay.jpg" alt="Travel Path Image">
+    <!-- LEFT CONTENT -->
+    <div class="about-content">
 
-<!-- OR DIRECT PATH -->
-<img src="./images/travel-map-overlay.jpg" alt="Travel Path Image">
-    <!-- RIGHT CONTENT -->
-    <div class="insta-content">
-
-      <span class="insta-tag">
-        SOCIAL PROFILE
+      <span class="about-tag">
+        ABOUT ME
       </span>
 
       <h2>
-        Follow <span>Saad Abbasi</span>
+        Creative <span>Web Developer</span>
       </h2>
 
       <p>
-        Creative web designer & digital creator from Kashmir.
-        Building premium modern websites with cinematic UI,
-        luxury effects & smooth animations.
+        I create premium modern websites with smooth animations,
+        cinematic dark UI, responsive layouts and luxury design
+        experiences for startups, businesses & personal brands.
       </p>
 
-      <div class="insta-stats">
+      <!-- FEATURES -->
+      <div class="about-features">
 
-        <div class="stat-box">
-          <h3>Creative</h3>
-          <span>Designer</span>
+        <div class="feature-box">
+          ⚡ Fast Performance
         </div>
 
-        <div class="stat-box">
-          <h3>Modern</h3>
-          <span>UI/UX</span>
+        <div class="feature-box">
+          🎨 Premium UI Design
         </div>
 
-        <div class="stat-box">
-          <h3>Premium</h3>
-          <span>Websites</span>
+        <div class="feature-box">
+          📱 Mobile Responsive
+        </div>
+
+        <div class="feature-box">
+          🚀 SEO Friendly
         </div>
 
       </div>
 
-      <!-- INSTAGRAM BUTTON -->
-      <a href="https://www.instagram.com/saadabbasi772"
-         target="_blank"
-         class="insta-btn">
-
-         Visit Instagram
+      <!-- BUTTON -->
+      <a href="#contact" class="about-btn">
+        Hire Me
       </a>
+
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="about-image">
+
+      <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop"
+      alt="Developer">
 
     </div>
 
@@ -2030,6 +2032,170 @@ INSTAGRAM PROFILE SECTION
 
 
 <style>
+
+/* =========================
+ABOUT SECTION
+========================= */
+
+.smart-about{
+  width: 100%;
+  min-height: 100vh;
+  background: #020617;
+  padding: 100px 8%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow */
+
+.about-glow{
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: #00c3ff;
+  filter: blur(180px);
+  opacity: 0.15;
+  top: -100px;
+  right: -100px;
+}
+
+/* Container */
+
+.smart-container{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 70px;
+  flex-wrap: wrap;
+}
+
+/* Content */
+
+.about-content{
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-tag{
+  color: #38bdf8;
+  font-size: 14px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.about-content h2{
+  color: #fff;
+  font-size: 58px;
+  margin: 18px 0;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.about-content h2 span{
+  color: #00c3ff;
+}
+
+.about-content p{
+  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1.9;
+  max-width: 600px;
+}
+
+/* Features */
+
+.about-features{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 18px;
+  margin: 40px 0;
+}
+
+.feature-box{
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 18px 22px;
+  border-radius: 16px;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.feature-box:hover{
+  border-color: #00c3ff;
+  transform: translateY(-5px);
+}
+
+/* Button */
+
+.about-btn{
+  display: inline-block;
+  padding: 15px 38px;
+  border-radius: 50px;
+  background: linear-gradient(135deg,#00c3ff,#2563eb);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 0 25px rgba(0,195,255,0.35);
+  transition: 0.4s ease;
+}
+
+.about-btn:hover{
+  transform: translateY(-5px);
+}
+
+/* Image */
+
+.about-image{
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.about-image img{
+  width: 100%;
+  max-width: 500px;
+  border-radius: 30px;
+  border: 2px solid rgba(0,195,255,0.25);
+
+  box-shadow:
+  0 0 30px rgba(0,195,255,0.25),
+  0 0 60px rgba(37,99,235,0.2);
+
+  transition: 0.5s ease;
+}
+
+.about-image img:hover{
+  transform: scale(1.03);
+}
+
+/* Responsive */
+
+@media(max-width: 900px){
+
+  .smart-about{
+    padding: 80px 6%;
+  }
+
+  .smart-container{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-content h2{
+    font-size: 42px;
+  }
+
+  .about-features{
+    grid-template-columns: 1fr;
+  }
+
+}
+
+</style>
 
 /* =========================
 INSTAGRAM SECTION
